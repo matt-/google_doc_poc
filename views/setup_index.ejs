@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Docs API Setup:</h1>
+	
+	
+	<pre><%= util.inspect(session_store) %></pre>
+	
+	<pre><%= util.inspect(session) %></pre>
+	
+	<h2>Access Token:</h2>
+	<% if(credentials){ %>
+	<pre><%= util.inspect(credentials) %></pre>
+	<% } %>
+	
+	
+	<p>Got the <a href="<%= url %>" target="_blank">token</a>.</p>
+	<form method="post" action="/setup/add_token">
+	  <input type="text" name="token" style="width:300px"><br>
+	  <input type="submit" value="Submit">
+	</form>
+  </body>
+</html>

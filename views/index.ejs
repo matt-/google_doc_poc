@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google POC</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Google ClickJack POC</h1>
+    <p>
+		<% if(session.email){ %>
+			Hi: <%= session.email %>
+		<% } else{ %>
+			Click <a href="/doc">this link</a> to try it out.
+		<% } %>
+    </p>
+  </body>
+</html>

